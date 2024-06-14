@@ -36,8 +36,29 @@
     transform: rotate(360deg);
   }
 }
-background: rgb(131,58,180);
-background: -moz-radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 60%, rgba(252,176,69,1) 100%);
-background: -webkit-radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 60%, rgba(252,176,69,1) 100%);
-background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 60%, rgba(252,176,69,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1);
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons+Round&display=swap");
+
+svg {
+	font-family: "Material Icons Round", sans-serif;
+	width: 100%; height: 100%;
+}
+svg text {
+	animation: stroke 6s infinite alternate;
+	stroke-width: 2;
+	stroke: #165DDE;
+	font-size: 134px;
+}
+@keyframes stroke {
+	0%   {
+		fill: rgba(72,138,204,0); stroke: rgba(22,93,222,1);
+		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+	}
+	70%  {fill: rgba(72,138,204,0); stroke: rgba(22,93,222,1); }
+	80%  {fill: rgba(72,138,204,0); stroke: rgba(22,93,222,1); stroke-width: 3; }
+	100% {
+		fill: rgba(72,138,204,1); stroke: rgba(22,93,222,0);
+		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+	}
+}
+
+.wrapper {background-color: #212225};
