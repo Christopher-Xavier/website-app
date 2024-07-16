@@ -21,6 +21,12 @@
     </style>
   </head>
 <body class="w3-black">
+  <p id="demo"></p>
+
+<script>
+const d = new Date();
+document.getElementById("demo").innerHTML = d;
+</script>
 <div class="wrapper">
     <svg>
       <text x="50%" y="50%" dy=".35em" text-anchor="middle">
@@ -53,7 +59,7 @@
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
   <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
     <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
     <a href="#projects" class="w3-bar-item w3-button" style="width:25% !important">PROJECTS</a>
     <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
@@ -167,19 +173,26 @@
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half">
         <img src="./images/work-1.jpg" style="width:100%"><p>Bookmarks App</p><strong></strong><button><a href="https://github.com/Christopher-Xavier/Bookmark-App-Final">Github Repository</a></button>
-        <img src="./images/work-2.jpg" style="width:100%"><p>Quiz App</p><strong><bold></bold></strong><button><a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate">Quiz App</a></button>
+        <img src="./images/work-2.jpg" style="width:100%" alt="avatar" width="430" height="721"><p>Quiz App</p><strong><bold></bold></strong><button><a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate">Quiz App</a></button>
         <img src="./images/work-3.jpg" style="width:100%"><p>Petful|Space Reputation</p><strong><bold></bold></strong><button><a href="https://github.com/Christopher-Xavier/Petful-Client">Github Repository</a></button>
       </div>
       <div class="w3-half">
         <img src="./images/work-5.jpg" style="width:100%"><p>Spanish Tutor</p><strong><bold></bold></strong>
-        <img src="./images/work-4.jpg" style="width:100%"><p>Buddy App</p><strong><bold></bold></strong>
-        <img src="./images/work-6.jpg" style="width:100%"><p>Pizza Ordering Chatbot</p><strong><button><a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot">Github Repo</a></button></strong>
+        <img src="./images/work-4.jpg" style="width:100%" alt="avatar"><p>Buddy App</p><strong><bold></bold></strong>
+        <img src="./images/work-6.jpg" style="width:100%" alt="avatar"><p>Pizza Ordering Chatbot</p><strong><button><a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot">Github Repo</a></button></strong>
         <img src="./images/Cabinet-view.png" style="width:100%"><p>Linus Bar Client</p><strong><bold><button><a href="https://github.com/Christopher-Xavier/Bar-client">Github Repo</a></button></bold></strong>
       </div>
     </div>
     <!-- End photo grid -->
    
   <!-- End Portfolio Section -->
+  <iframe
+  id="inlineFrameExample"
+  title="Inline Frame Example"
+  width="300"
+  height="200"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
+</iframe>
 
   <!-- Contact Section -->
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
@@ -195,13 +208,20 @@
 
     <!-- Image of location/map -->
    <a><img src="/w3images/map.jpg" class="w3-image w3-greyscale" style="width:100%;margin:32px 0"></a>
-   
+   <div class="w3-section">
+    <Fieldset><hgroup></hgroup></Fieldset>
     <p> Send me a message:</p>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
+    <form action="/action_page.php" input type="submit" target="_blank">
+      <p><label>
+        <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name">
+      </label></p>
+      <p><label>
+        <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email">
+      </label></p>
       <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
+      <p><label>
+        <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message">
+      </label></p>
         <button class="w3-button w3-light-grey w3-padding-large" type="submit">
           <i class="fa fa-paper-plane"></i> SEND MESSAGE
         </button>
@@ -230,7 +250,6 @@
 
 <!-- END PAGE CONTENT -->
 </div>
-<script src="dist/bundle.js"></script>
 <script src="app.js"></script>
 <script type="module" src="/main.js"></script>
 </body>
