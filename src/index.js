@@ -20,10 +20,6 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
-
 fetch('https://www.cxprotech.dev/api?base_url=$%7B%7D&contact=get#home')
   .then(response => {
     if (!response.ok) {
@@ -37,6 +33,8 @@ fetch('https://www.cxprotech.dev/api?base_url=$%7B%7D&contact=get#home')
   .catch(error => {
     console.error('Error fetching data:', error);
   });
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
