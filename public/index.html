@@ -1,104 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
-    <title>Christopher|Dev Portfolio </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" crossorigin="property" class="javascript">
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-<style>
-    body, h1,h2,h3,h4,h5,h6 {font-family:'Times New Roman', Times, serif, sans-serif}
-    .w3-row-padding img {margin-bottom: 12px}
+
+<head>
+  <title>Christopher|Dev Portfolio </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" crossorigin="property" class="javascript">
+  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Times New Roman', Times, serif, sans-serif
+    }
+
+    .w3-row-padding img {
+      margin-block-end: 12px
+    }
+
     /* Set the width of the sidebar to 120px */
-    .w3-sidebar {width: 120px;background-color: #222;}
+    .w3-sidebar {
+      inline-size: 120px;
+      background-color: #222;
+    }
+
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-    #main {margin-left: 120px}
+    #main {
+      margin-inline-start: 120px
+    }
+
     /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
-    </style>
-  </head>
+    @media only screen and (max-inline-size: 600px) {
+      #main {
+        margin-inline-start: 0
+      }
+    }
+  </style>
+</head>
+
 <body class="w3-black">
   <p id="demo"></p>
 
-<script>
-const d = new Date();
-document.getElementById("demo").innerHTML = d;
-</script>
-<div class="wrapper">
+  <script>
+    const d = new Date();
+    document.getElementById("demo").innerHTML = d;
+  </script>
+  <div class="wrapper">
     <svg>
       <text x="50%" y="50%" dy=".35em" text-anchor="middle">
         CXPROTECH
       </text>
     </svg>
   </div>
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <!-- Avatar image in top left corner -->
-  <img src="./images/pro2.jpg" alt="avatar" style="width:100%">
-  <a href="#home" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-home w3-xxlarge"></i>
-    <p>HOME</p>
-  </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>ABOUT</p>
-  </a>
-  <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-eye w3-xxlarge"></i>
-    <p>PROJECTS</p>
-  </a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>CONTACT</p>
-  </a>
-</nav>
+  <!-- Icon Bar (Sidebar - hidden on small screens) -->
+  <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <!-- Avatar image in top left corner -->
+    <img src="./images/pro2.jpg" alt="avatar" style="inline-size:100%">
+    <a href="#home" class="w3-bar-item w3-button w3-padding-large w3-black">
+      <i class="fa fa-home w3-xxlarge"></i>
+      <p>HOME</p>
+    </a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-user w3-xxlarge"></i>
+      <p>ABOUT</p>
+    </a>
+    <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-eye w3-xxlarge"></i>
+      <p>PROJECTS</p>
+    </a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-envelope w3-xxlarge"></i>
+      <p>CONTACT</p>
+    </a>
+  </nav>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
-    <a href="#projects" class="w3-bar-item w3-button" style="width:25% !important">PROJECTS</a>
-    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  <!-- Navbar on small screens (Hidden on medium and large screens) -->
+  <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+      <a href="#home" class="w3-bar-item w3-button" style="inline-size:25% !important">HOME</a>
+      <a href="#about" class="w3-bar-item w3-button" style="inline-size:25% !important">ABOUT</a>
+      <a href="#projects" class="w3-bar-item w3-button" style="inline-size:25% !important">PROJECTS</a>
+      <a href="#contact" class="w3-bar-item w3-button" style="inline-size:25% !important">CONTACT</a>
+    </div>
   </div>
-</div>
   <input type="button" class="enjoy-css" value="Enjoy" />
 
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Christopher X.</h1>
-    <p>Software Developer | Web Designer.</p><strong><bold></bold></strong>
-    <img src="./images/pro2.jpg" alt="Avatar" class="w3-image" width="992" height="1108">
-  </header>
-</div>
+  <!-- Page Content -->
+  <div class="w3-padding-large" id="main">
+    <!-- Header/Home -->
+    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+      <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Christopher X.</h1>
+      <p>Software Developer | Web Designer.</p><strong>
+        <bold></bold>
+      </strong>
+      <img src="./images/pro2.jpg" alt="Avatar" class="w3-image" width="992" height="1108">
+    </header>
+  </div>
   <!-- About Section -->
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
     <h2 class="w3-text-light-grey">Christopher Xaiver</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <p>Hello! I am Christopher Bogan, a recent graduate holding a Bachelor's degree in Information Technology. Driven by a passion for leveraging technology to tackle complex challenges, I have devoted my academic career to gaining a deep understanding of IT systems and the latest digital developments. Armed with a robust theoretical and practical foundation, I am excited to contribute my expertise to the tech industry, a field where innovation translates into tangible benefits. Welcome to my portfolio!
-    </p><strong><bold></bold></strong>
+    <hr style="inline-size:200px" class="w3-opacity">
+    <p>Hello! I am Christopher Bogan, a recent graduate holding a Bachelor's degree in Information Technology. Driven by
+      a passion for leveraging technology to tackle complex challenges, I have devoted my academic career to gaining a
+      deep understanding of IT systems and the latest digital developments. Armed with a robust theoretical and
+      practical foundation, I am excited to contribute my expertise to the tech industry, a field where innovation
+      translates into tangible benefits. Welcome to my portfolio!
+    </p><strong>
+      <bold></bold>
+    </strong>
     <img src="./images/wp1536539-hi-tech-wallpaper.jpg" alt="programming" style="display: inline-flexbox;"></a>
-    
+
     <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
     <p class="w3-wide">Problem-Solving</p>
     <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+      <div class="w3-dark-grey" style="block-size:28px;inline-size:95%"></div>
     </div>
     <p class="w3-wide">Web Design</p>
     <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:85%"></div>
+      <div class="w3-dark-grey" style="block-size:28px;inline-size:85%"></div>
     </div>
     <p class="w3-wide">Full stack Development</p>
     <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:80%"></div>
+      <div class="w3-dark-grey" style="block-size:28px;inline-size:80%"></div>
     </div>
     <br>
-    
+
     <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
       <div class="w3-quarter w3-section">
         <span class="w3-xlarge">11+</span><br>
@@ -117,102 +150,123 @@ document.getElementById("demo").innerHTML = d;
         Meetings
       </div>
     </div>
-<p><a href="https://profile.indeed.com/p/christopherb-4q714qt" target="_blank"><button class="w3-button w3-light-grey w3-padding-large w3-section" title="text" lang="en" >Download Resume</button></a></p>
-    <i class="fa fa-download"></i> Download Resume</div>
-    <!-- Grid for pricing tables -->
-    <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half w3-margin-bottom">
-        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Problem-Solving</li>
-          <li class="w3-padding-16">5GB Storage</li>
-          <li class="w3-padding-16">Mail Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 22</h2>
-            <span class="w3-opacity">per hour</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-      <div class="w3-half">
-        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Software Troubleshooting</li>
-          <li class="w3-padding-16">50GB Storage</li>
-          <li class="w3-padding-16">Endless Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 25</h2>
-            <span class="w3-opacity">per Issue/Hour</span>
-          </li>
-          <li class="w3-button w3-padding-24 w3-hover-black">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
+    <p><a href="https://profile.indeed.com/p/christopherb-4q714qt" target="_blank"><button
+          class="w3-button w3-light-grey w3-padding-large w3-section" title="text" lang="en">Download
+          Resume</button></a></p>
+    <i class="fa fa-download"></i> Download Resume
+  </div>
+  <!-- Grid for pricing tables -->
+  <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
+  <div class="w3-row-padding" style="margin:0 -16px">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+        <li class="w3-padding-16">Web Design</li>
+        <li class="w3-padding-16">Problem-Solving</li>
+        <li class="w3-padding-16">5GB Storage</li>
+        <li class="w3-padding-16">Mail Support</li>
+        <li class="w3-padding-16">
+          <h2>$ 22</h2>
+          <span class="w3-opacity">per hour</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-half">
+      <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
+        <li class="w3-padding-16">Web Design</li>
+        <li class="w3-padding-16">Software Troubleshooting</li>
+        <li class="w3-padding-16">50GB Storage</li>
+        <li class="w3-padding-16">Endless Support</li>
+        <li class="w3-padding-16">
+          <h2>$ 25</h2>
+          <span class="w3-opacity">per Issue/Hour</span>
+        </li>
+        <li class="w3-button w3-padding-24 w3-hover-black">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
+    </div>
     <!-- End Grid/Pricing tables -->
+  </div>
+  <div class="card" style="inline-size:400px">
+    <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+    <div class="card-body">
+      <h4 class="card-title">John Doe</h4>
+      <p class="card-text">Some example text.</p>
+      <a href="#" class="btn btn-primary">See Profile</a>
     </div>
-    <div class="card" style="width:400px">
-      <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-      <div class="card-body">
-        <h4 class="card-title">John Doe</h4>
-        <p class="card-text">Some example text.</p>
-        <a href="#" class="btn btn-primary">See Profile</a>
-      </div>
-    </div>
-    <!-- Testimonials -->
-    <h3 class="w3-bar-block w3-text-light-grey">My Awards</h3> 
-   <a><img src="./images/certificate.png" alt="text" class="id" style="width: 300px;"></a>
-    <p><span class="w3-large w3-margin-right">Credentials</span> Strayer.</p>
-    <p>My accomplishments.</p>
-   <!-- Portfolio Section -->
-   <div class="w3-padding-64 w3-content" id="photos">
+  </div>
+  <!-- Testimonials -->
+<a href="https://imgflip.com/i/8xw77e"><img src="https://i.imgflip.com/8xw77e.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator">from Imgflip Meme Generator</a></div>
+  <h3 class="w3-bar-block w3-text-light-grey">My Awards</h3>
+  <a><img src="./images/certificate.png" alt="text" class="id" style="inline-size: 300px;"></a>
+  <p><span class="w3-large w3-margin-right">Credentials</span> Strayer.</p>
+  <p>My accomplishments.</p>
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content" id="photos">
     <h2 class="w3-text-light-grey">My Photos</h2>
-    <hr style="width:200px" class="w3-opacity">
+    <hr style="inline-size:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half">
-        <img src="./images/work-1.jpg" style="width:100%"><p>Bookmarks App</p><strong></strong><button><a href="https://github.com/Christopher-Xavier/Bookmark-App-Final">Github Repository</a></button>
-        <img src="./images/work-2.jpg" style="width:100%" alt="avatar" width="430" height="721"><p>Quiz App</p><strong><bold></bold></strong><button><a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate">Quiz App</a></button>
-        <img src="./images/work-3.jpg" style="width:100%"><p>Petful|Space Reputation</p><strong><bold></bold></strong><button><a href="https://github.com/Christopher-Xavier/Petful-Client">Github Repository</a></button>
+        <img src="./images/work-1.jpg" style="inline-size:100%">
+        <p>Bookmarks App</p><strong></strong><button><a
+            href="https://github.com/Christopher-Xavier/Bookmark-App-Final">Github Repository</a></button>
+        <img src="./images/work-2.jpg" style="inline-size:100%" alt="avatar" width="430" height="721">
+        <p>Quiz App</p><strong>
+          <bold></bold>
+        </strong><button><a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate">Quiz App</a></button>
+        <img src="./images/work-3.jpg" style="inline-size:100%">
+        <p>Petful|Space Reputation</p><strong>
+          <bold></bold>
+        </strong><button><a href="https://github.com/Christopher-Xavier/Petful-Client">Github Repository</a></button>
       </div>
       <div class="w3-half">
-        <img src="./images/work-5.jpg" style="width:100%"><p>Spanish Tutor</p><strong><bold></bold></strong>
-        <img src="./images/work-4.jpg" style="width:100%" alt="avatar"><p>Buddy App</p><strong><bold></bold></strong>
-        <img src="./images/work-6.jpg" style="width:100%" alt="avatar"><p>Pizza Ordering Chatbot</p><strong><button><a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot">Github Repo</a></button></strong>
-        <img src="./images/Cabinet-view.png" style="width:100%"><p>Linus Bar Client</p><strong><bold><button><a href="https://github.com/Christopher-Xavier/Bar-client">Github Repo</a></button></bold></strong>
+        <img src="./images/work-5.jpg" style="inline-size:100%">
+        <p>Spanish Tutor</p><strong>
+          <bold></bold>
+        </strong>
+        <img src="./images/work-4.jpg" style="inline-size:100%" alt="avatar">
+        <p>Buddy App</p><strong>
+          <bold></bold>
+        </strong>
+        <img src="./images/work-6.jpg" style="inline-size:100%" alt="avatar">
+        <p>Pizza Ordering Chatbot</p><strong><button><a
+              href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot">Github Repo</a></button></strong>
+        <img src="./images/Cabinet-view.png" style="inline-size:100%">
+        <p>Linus Bar Client</p><strong>
+          <bold><button><a href="https://github.com/Christopher-Xavier/Bar-client">Github Repo</a></button></bold>
+        </strong>
       </div>
     </div>
     <!-- End photo grid -->
-   
-  <!-- End Portfolio Section -->
-  <iframe
-  id="inlineFrameExample"
-  title="Inline Frame Example"
-  width="300"
-  height="200"
-  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
-</iframe>
 
-  <!-- Contact Section -->
-  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-    <h2 class="w3-text-light-grey">Contact Me</h2>
-    <hr style="width:200px" class="w3-opacity">
-  
-    <div class="w3-section">
-      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> TUPELO, Ms</p>
-      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 662-871-2486</p>
-      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
-    </div><br>
-    <strong><p>Let's Connect! Send me a message:</p></strong>
-  </div>
+    <!-- End Portfolio Section -->
+    <iframe id="inlineFrameExample" title="Inline Frame Example" width="300" height="200"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
+    </iframe>
+
+    <!-- Contact Section -->
+    <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+      <h2 class="w3-text-light-grey">Contact Me</h2>
+      <hr style="inline-size:200px" class="w3-opacity">
+
+      <div class="w3-section">
+        <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> TUPELO, Ms</p>
+        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 662-871-2486</p>
+        <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+      </div><br>
+      <strong>
+        <p>Let's Connect! Send me a message:</p>
+      </strong>
+    </div>
     <!-- Image of location/map -->
-   <a><img src="/w3images/map.jpg" class="w3-image w3-greyscale" style="width:100%;margin:32px 0"></a>
+    <a><img src="/w3images/map.jpg" class="w3-image w3-greyscale" style="inline-size:100%;margin:32px 0"></a>
     <p> Send me a message:</p>
     <fieldset class="grid">
       <form action="/action_page.php" target="_blank">
@@ -226,33 +280,35 @@ document.getElementById("demo").innerHTML = d;
           </button>
         </p>
       </form>
-    <!-- End Contact Section -->
+      <!-- End Contact Section -->
     </fieldset>
-   </div>
-  </div>  
-    </form>
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="christopher-bogan" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/christopher-bogan?trk=profile-badge">Christopher Bogan</a></div>
-              
+  </div>
+  </div>
+  </form>
+  <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL"
+    data-vanity="christopher-bogan" data-version="v1"><a class="badge-base__link LI-simple-link"
+      href="https://www.linkedin.com/in/christopher-bogan?trk=profile-badge">Christopher Bogan</a></div>
+
   <!-- End Contact Section -->
-    
-<!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
-<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
- <p class="w3-small">This website was created by Christopher X call today to get yours!</p>
- <a class="w3-button w3-round-xxlarge w3-small w3-black" href="https://www.w3schools.com/spaces" target="_blank">Start now</a> 
- <!-- End footer -->
-</footer>
 
-<!-- END PAGE CONTENT -->
-</div>
-<script src="app.js"></script>
-<script type="module" src="/main.js"></script>
+  <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-small">This website was created by Christopher X call today to get yours!</p>
+    <a class="w3-button w3-round-xxlarge w3-small w3-black" href="https://www.w3schools.com/spaces"
+      target="_blank">Start now</a>
+    <!-- End footer -->
+  </footer>
+
+  <!-- END PAGE CONTENT -->
+  </div>
+  <script src="app.js"></script>
+  <script type="module" src="/main.js"></script>
 </body>
-</html>
 
-  
+</html>
