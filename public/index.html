@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Christopher Bogan's Cool Dev Portfolio with dynamic animations and interactive design."
+      content="Christopher Bogan's interactive dev portfolio with dynamic animations and engaging features."
     />
-    <title>Christopher | Cool Dev Portfolio</title>
+    <title>Christopher | Dev Portfolio</title>
     <!-- CSS Frameworks and Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://www.w3schools.com/w3css/4/w3.css"
-    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Montserrat"
@@ -21,20 +18,26 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!-- Animate.css for additional animations -->
+    <!-- AOS Library for Scroll Animations -->
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       rel="stylesheet"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
     />
-
-    <!-- LinkedIn Badge Script -->
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-
     <style>
-      /* Global Animated Gradient Background */
+      /* Global & Mode Dependent Styles */
       body {
-        font-family: 'Montserrat', sans-serif;
         margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        transition: background 0.3s, color 0.3s;
+      }
+      body.dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      body.light-mode {
+        background-color: #ffffff;
+        color: #333;
+        /* Animated gradient background for light mode */
         background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
         background-size: 600% 600%;
         animation: gradientAnimation 16s ease infinite;
@@ -50,71 +53,62 @@
           background-position: 0% 50%;
         }
       }
-
-      /* Sidebar and Navbar Styling */
+      /* Sidebar */
       .w3-sidebar {
         inline-size: 120px;
         background-color: rgba(0, 0, 0, 0.8);
       }
       #main {
         margin-inline-start: 120px;
-        animation: fadeIn 2s;
+        padding: 20px;
       }
-      .w3-bar-item {
-        transition: transform 0.3s, background-color 0.3s;
+      /* Dark/Light Toggle Button */
+      .toggle-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       }
-      .w3-bar-item:hover {
-        background-color: #444;
-        transform: scale(1.05);
+      .toggle-btn.dark {
+        background: #333;
+        color: #fff;
       }
-
-      /* Header Section with Overlay & Animations */
+      /* Header Styles & Overlay */
       header {
+        text-align: center;
         position: relative;
         overflow: hidden;
-        text-align: center;
-        color: #fff;
+        padding: 100px 20px;
       }
       header::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.4);
-      }
-      header h1 {
-        font-size: 3.5em;
-        position: relative;
-        z-index: 1;
-        animation: slideInDown 1s ease-out;
-      }
-      header p {
-        font-size: 1.5em;
-        position: relative;
-        z-index: 1;
-        animation: slideInUp 1s ease-out;
-      }
-
-      /* Skill Bars */
-      .skill-bar {
-        height: 28px;
-        background-color: #333;
-        position: relative;
-        margin-bottom: 10px;
-      }
-      .skill {
+        width: 100%;
         height: 100%;
-        background-color: #ff7e5f;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
       }
-
-      /* Project Cards with Hover Effects */
+      header h1,
+      header p {
+        position: relative;
+        z-index: 2;
+      }
+      /* Project Card Styling with Hover Effects */
       .project-card {
         position: relative;
         overflow: hidden;
         border-radius: 8px;
+        margin-bottom: 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
         transition: transform 0.3s;
       }
       .project-card:hover {
@@ -123,75 +117,89 @@
       .project-card img {
         width: 100%;
         display: block;
-        border-radius: 8px;
       }
       .project-card figcaption {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.6);
-        color: #fff;
         padding: 10px;
         text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
         opacity: 0;
         transition: opacity 0.3s;
       }
       .project-card:hover figcaption {
         opacity: 1;
       }
-
-      /* Footer Styling */
-      footer {
-        text-align: center;
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .modal-content {
+        margin: auto;
+        background: #fff;
         padding: 20px;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: #fff;
+        border-radius: 4px;
+        width: 80%;
+        max-width: 600px;
+        color: #333;
+      }
+      .close-modal {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
       }
     </style>
   </head>
-
-  <body class="w3-black">
-    <!-- Date Display -->
-    <p id="demo" class="w3-center w3-text-white"></p>
-    <script>
-      const d = new Date();
-      document.getElementById("demo").innerHTML = d.toLocaleString();
-    </script>
-
-    <!-- Logo / Branding Section -->
-    <div class="wrapper w3-center w3-padding-16">
-      <svg width="200" height="50">
-        <text
-          x="50%"
-          y="50%"
-          dy=".35em"
-          text-anchor="middle"
-          fill="#fff"
-          font-size="24"
-          font-family="Montserrat"
-        >
-          CXPROTECH
-        </text>
-      </svg>
-    </div>
+  <body class="light-mode">
+    <!-- Dark/Light Mode Toggle Button -->
+    <button class="toggle-btn" id="toggleModeBtn" onclick="toggleMode()">&#9790;</button>
 
     <!-- Sidebar Navigation for Larger Screens -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" aria-label="Sidebar Navigation">
-      <img src="./images/pro2.jpg" alt="Christopher's Avatar" style="width: 100%;" class="w3-circle" loading="lazy" />
+    <nav
+      class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center"
+      aria-label="Sidebar Navigation"
+    >
+      <img
+        src="./images/pro2.jpg"
+        alt="Christopher's Avatar"
+        style="width: 100%;"
+        class="w3-circle"
+        loading="lazy"
+      />
       <a href="#home" class="w3-bar-item w3-button w3-padding-large w3-black">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
       </a>
-      <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <a
+        href="#about"
+        class="w3-bar-item w3-button w3-padding-large w3-hover-black"
+      >
         <i class="fa fa-user w3-xxlarge"></i>
         <p>ABOUT</p>
       </a>
-      <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <a
+        href="#projects"
+        class="w3-bar-item w3-button w3-padding-large w3-hover-black"
+      >
         <i class="fa fa-eye w3-xxlarge"></i>
         <p>PROJECTS</p>
       </a>
-      <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <a
+        href="#contact"
+        class="w3-bar-item w3-button w3-padding-large w3-hover-black"
+      >
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>CONTACT</p>
       </a>
@@ -200,242 +208,320 @@
     <!-- Navbar for Small Screens -->
     <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
       <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-        <a href="#home" class="w3-bar-item w3-button" style="width: 25% !important">HOME</a>
-        <a href="#about" class="w3-bar-item w3-button" style="width: 25% !important">ABOUT</a>
-        <a href="#projects" class="w3-bar-item w3-button" style="width: 25% !important">PROJECTS</a>
-        <a href="#contact" class="w3-bar-item w3-button" style="width: 25% !important">CONTACT</a>
+        <a
+          href="#home"
+          class="w3-bar-item w3-button"
+          style="width: 25% !important;"
+          >HOME</a
+        >
+        <a
+          href="#about"
+          class="w3-bar-item w3-button"
+          style="width: 25% !important;"
+          >ABOUT</a
+        >
+        <a
+          href="#projects"
+          class="w3-bar-item w3-button"
+          style="width: 25% !important;"
+          >PROJECTS</a
+        >
+        <a
+          href="#contact"
+          class="w3-bar-item w3-button"
+          style="width: 25% !important;"
+          >CONTACT</a
+        >
       </div>
     </div>
 
     <!-- Main Content -->
-    <main id="main" class="w3-padding-large">
-      <!-- Home Section -->
-      <header
-        id="home"
-        class="w3-container w3-center"
-        style="padding: 100px 0; background: url('./images/bg-header.jpg') center/cover no-repeat;"
-      >
-        <h1 class="animate__animated animate__fadeInDown">I'm Christopher X.</h1>
-        <p class="animate__animated animate__fadeInUp">Software Developer | Web Designer</p>
+    <div id="main">
+      <!-- Home Section with Scroll Animation -->
+      <header id="home" data-aos="fade-up">
+        <h1>I'm Christopher X.</h1>
+        <p>Software Developer | Web Designer</p>
         <img
           src="./images/pro2.jpg"
           alt="Christopher's Professional Image"
-          class="w3-image w3-margin-top"
           style="max-width: 350px; border-radius: 50%;"
           loading="lazy"
         />
       </header>
 
       <!-- About Section -->
-      <section id="about" class="w3-content w3-justify w3-text-white w3-padding-64">
-        <h2 class="w3-text-white">About Me</h2>
-        <hr class="w3-opacity" style="width: 200px; margin: auto;" />
+      <section id="about" data-aos="fade-right" class="w3-padding-64">
+        <h2>About Me</h2>
+        <hr style="width: 200px; margin: auto;" />
         <p>
-          I'm Christopher Bogan, a passionate IT graduate focused on merging innovative technology with creative design. I thrive on solving problems and transforming ideas into dynamic solutions. Welcome to my digital playground where code meets artistry!
+          I'm Christopher Bogan, a passionate IT professional blending
+          innovative technology with creative design. I love solving challenges
+          and transforming ideas into dynamic, interactive solutions.
         </p>
         <img
           src="./images/wp1536539-hi-tech-wallpaper.jpg"
-          alt="Dynamic tech background"
+          alt="Tech background"
           style="display: block; margin: 20px auto; max-width: 90%;"
           loading="lazy"
         />
-
-        <h3 class="w3-padding-16">My Skills</h3>
+        <h3>My Skills</h3>
         <p>Problem-Solving</p>
-        <div class="skill-bar">
-          <div class="skill" style="width: 95%;"></div>
+        <div class="w3-light-grey" style="margin-bottom: 10px;">
+          <div class="w3-container w3-orange" style="width:95%">
+            95%
+          </div>
         </div>
         <p>Web Design</p>
-        <div class="skill-bar">
-          <div class="skill" style="width: 85%; background-color: #86a8e7;"></div>
+        <div class="w3-light-grey" style="margin-bottom: 10px;">
+          <div
+            class="w3-container"
+            style="width:85%; background-color: #86a8e7;"
+          >
+            85%
+          </div>
         </div>
         <p>Full Stack Development</p>
-        <div class="skill-bar">
-          <div class="skill" style="width: 80%; background-color: #91eae4;"></div>
+        <div class="w3-light-grey" style="margin-bottom: 10px;">
+          <div
+            class="w3-container"
+            style="width:80%; background-color: #91eae4;"
+          >
+            80%
+          </div>
         </div>
-
-        <div class="w3-row w3-center w3-padding-16 w3-section">
+        <div class="w3-row w3-center w3-padding-16">
           <div class="w3-quarter">
-            <span class="w3-xlarge">11+</span><br />
-            Partners
+            <span class="w3-xlarge">11+</span><br />Partners
           </div>
           <div class="w3-quarter">
-            <span class="w3-xlarge">55+</span><br />
-            Projects
+            <span class="w3-xlarge">55+</span><br />Projects
           </div>
           <div class="w3-quarter">
-            <span class="w3-xlarge">89+</span><br />
-            Clients
+            <span class="w3-xlarge">89+</span><br />Clients
           </div>
           <div class="w3-quarter">
-            <span class="w3-xlarge">150+</span><br />
-            Meetings
+            <span class="w3-xlarge">150+</span><br />Meetings
           </div>
         </div>
         <p>
-          <a href="https://profile.indeed.com/p/christopherb-4q714qt" target="_blank">
-            <button class="w3-button w3-light-grey w3-padding-large">
+          <a
+            href="https://profile.indeed.com/p/christopherb-4q714qt"
+            target="_blank"
+            ><button class="w3-button w3-light-grey w3-padding-large">
               Download Resume <i class="fa fa-download"></i>
-            </button>
-          </a>
+            </button></a
+          >
         </p>
       </section>
 
-      <!-- Projects Section -->
-      <section id="projects" class="w3-padding-64 w3-content">
-        <h2 class="w3-text-white">My Projects</h2>
-        <hr class="w3-opacity" style="width: 200px; margin: auto;" />
-        <div class="w3-row-padding" style="margin: 0 -16px;">
+      <!-- Projects Section with Scroll Animation -->
+      <section id="projects" data-aos="fade-left" class="w3-padding-64">
+        <h2>My Projects</h2>
+        <hr style="width: 200px; margin: auto;" />
+        <div
+          class="w3-row-padding"
+          style="margin: 0 -16px;"
+        >
           <div class="w3-half">
-            <figure class="project-card">
+            <figure class="project-card" onclick="openModal('project1')">
               <img
                 src="./images/work-1.jpg"
-                alt="Bookmarks App screenshot"
+                alt="Bookmarks App"
                 loading="lazy"
               />
-              <figcaption>
-                Bookmarks App<br />
-                <button class="w3-button w3-white">
-                  <a href="https://github.com/Christopher-Xavier/Bookmark-App-Final">Github</a>
-                </button>
-              </figcaption>
+              <figcaption>Bookmarks App</figcaption>
             </figure>
-            <figure class="project-card" style="margin-top: 16px;">
+            <figure class="project-card" onclick="openModal('project2')">
               <img
                 src="./images/work-2.jpg"
-                alt="Quiz App screenshot"
+                alt="Quiz App"
                 loading="lazy"
               />
-              <figcaption>
-                Quiz App<br />
-                <button class="w3-button w3-white">
-                  <a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate">Github</a>
-                </button>
-              </figcaption>
+              <figcaption>Quiz App</figcaption>
             </figure>
           </div>
           <div class="w3-half">
-            <figure class="project-card">
+            <figure class="project-card" onclick="openModal('project3')">
               <img
                 src="./images/work-3.jpg"
                 alt="Petful|Space Reputation"
                 loading="lazy"
               />
-              <figcaption>
-                Petful|Space Reputation<br />
-                <button class="w3-button w3-white">
-                  <a href="https://github.com/Christopher-Xavier/Petful-Client">Github</a>
-                </button>
-              </figcaption>
+              <figcaption>Petful|Space Reputation</figcaption>
             </figure>
-            <figure class="project-card" style="margin-top: 16px;">
-              <img
-                src="./images/work-5.jpg"
-                alt="Spanish Tutor"
-                loading="lazy"
-              />
-              <figcaption>Spanish Tutor</figcaption>
-            </figure>
-            <figure class="project-card" style="margin-top: 16px;">
-              <img
-                src="./images/work-4.jpg"
-                alt="Buddy App"
-                loading="lazy"
-              />
-              <figcaption>Buddy App</figcaption>
-            </figure>
-            <figure class="project-card" style="margin-top: 16px;">
+            <figure class="project-card" onclick="openModal('project4')">
               <img
                 src="./images/work-6.jpg"
                 alt="Pizza Ordering Chatbot"
                 loading="lazy"
               />
-              <figcaption>
-                Pizza Ordering Chatbot<br />
-                <button class="w3-button w3-white">
-                  <a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot">Github</a>
-                </button>
-              </figcaption>
-            </figure>
-            <figure class="project-card" style="margin-top: 16px;">
-              <img
-                src="./images/Cabinet-view.png"
-                alt="Linus Bar Client"
-                loading="lazy"
-              />
-              <figcaption>
-                Linus Bar Client<br />
-                <button class="w3-button w3-white">
-                  <a href="https://github.com/Christopher-Xavier/Bar-client">Github</a>
-                </button>
-              </figcaption>
+              <figcaption>Pizza Ordering Chatbot</figcaption>
             </figure>
           </div>
         </div>
       </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="w3-padding-64 w3-content w3-text-white">
+      <!-- Modal (Interactive Project Details) -->
+      <div id="projectModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal" onclick="closeModal()">&times;</span>
+          <div id="modalContent">
+            <!-- Project detail content is injected dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Section with Scroll Animation -->
+      <section id="contact" data-aos="fade-up" class="w3-padding-64">
         <h2>Contact Me</h2>
-        <hr class="w3-opacity" style="width: 200px; margin: auto;" />
+        <hr style="width: 200px; margin: auto;" />
         <div class="w3-section">
           <p><i class="fa fa-map-marker fa-fw"></i> Tupelo, MS</p>
           <p><i class="fa fa-phone fa-fw"></i> 662-871-2486</p>
           <p><i class="fa fa-envelope fa-fw"></i> mail@mail.com</p>
         </div>
-        <!-- Map Embed -->
         <iframe
           title="Map of Tupelo, MS"
           width="300"
           height="200"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004&layer=mapnik"
           style="border: 1px solid #aaa"
         ></iframe>
-        <!-- Contact Form -->
         <h3 class="w3-margin-top">Send Me a Message</h3>
-        <form action="/action_page.php" method="post" target="_blank" class="w3-margin-top">
-          <input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name" />
-          <input class="w3-input w3-padding-16 w3-margin-top" type="email" placeholder="Email" required name="Email" />
-          <input class="w3-input w3-padding-16 w3-margin-top" type="text" placeholder="Subject" required name="Subject" />
-          <textarea class="w3-input w3-padding-16 w3-margin-top" placeholder="Message" required name="Message"></textarea>
-          <button class="w3-button w3-light-grey w3-padding-large w3-margin-top" type="submit">
+        <form
+          action="/action_page.php"
+          method="post"
+          target="_blank"
+          class="w3-margin-top"
+        >
+          <input
+            class="w3-input w3-padding-16"
+            type="text"
+            placeholder="Name"
+            required
+            name="Name"
+          />
+          <input
+            class="w3-input w3-padding-16 w3-margin-top"
+            type="email"
+            placeholder="Email"
+            required
+            name="Email"
+          />
+          <input
+            class="w3-input w3-padding-16 w3-margin-top"
+            type="text"
+            placeholder="Subject"
+            required
+            name="Subject"
+          />
+          <textarea
+            class="w3-input w3-padding-16 w3-margin-top"
+            placeholder="Message"
+            required
+            name="Message"
+          ></textarea>
+          <button
+            class="w3-button w3-light-grey w3-padding-large w3-margin-top"
+            type="submit"
+          >
             <i class="fa fa-paper-plane"></i> SEND MESSAGE
           </button>
         </form>
       </section>
 
       <!-- LinkedIn Badge -->
-      <div
-        class="badge-base LI-profile-badge w3-center"
-        data-locale="en_US"
-        data-size="large"
-        data-theme="light"
-        data-type="VERTICAL"
-        data-vanity="christopher-bogan"
-        data-version="v1"
-      >
-        <a
-          class="badge-base__link LI-simple-link"
-          href="https://www.linkedin.com/in/christopher-bogan?trk=profile-badge"
-          >Christopher Bogan</a
+      <div class="w3-center w3-padding-64">
+        <div
+          class="badge-base LI-profile-badge"
+          data-locale="en_US"
+          data-size="large"
+          data-theme="light"
+          data-type="VERTICAL"
+          data-vanity="christopher-bogan"
+          data-version="v1"
         >
+          <a
+            class="badge-base__link LI-simple-link"
+            href="https://www.linkedin.com/in/christopher-bogan?trk=profile-badge"
+            >Christopher Bogan</a
+          >
+        </div>
       </div>
-    </main>
+    </div>
 
     <!-- Footer -->
-    <footer>
-      <div class="w3-center">
+    <footer class="w3-center w3-padding-64">
+      <div>
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
         <i class="fa fa-instagram w3-hover-opacity"></i>
         <i class="fa fa-twitter w3-hover-opacity"></i>
         <i class="fa fa-linkedin w3-hover-opacity"></i>
       </div>
       <p>&copy; 2025 Christopher X. All rights reserved.</p>
-      <a class="w3-button w3-round-xxlarge w3-black" href="https://www.w3schools.com/spaces" target="_blank">Start Now</a>
+      <a
+        class="w3-button w3-round-xxlarge w3-black"
+        href="https://www.w3schools.com/spaces"
+        target="_blank"
+        >Start Now</a
+      >
     </footer>
 
     <!-- External Scripts -->
-    <script src="app.js"></script>
-    <script type="module" src="/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init();
+
+      // Dark/Light Mode Toggle Functionality
+      function toggleMode() {
+        const body = document.body;
+        const toggleBtn = document.getElementById("toggleModeBtn");
+        if (body.classList.contains("light-mode")) {
+          body.classList.remove("light-mode");
+          body.classList.add("dark-mode");
+          toggleBtn.innerHTML = "&#9788;"; // sun icon for dark mode
+          toggleBtn.classList.add("dark");
+        } else {
+          body.classList.remove("dark-mode");
+          body.classList.add("light-mode");
+          toggleBtn.innerHTML = "&#9790;"; // moon icon for light mode
+          toggleBtn.classList.remove("dark");
+        }
+      }
+
+      // Modal functions for project details
+      function openModal(projectId) {
+        const modalContent = document.getElementById("modalContent");
+        let content = "";
+        if (projectId === "project1") {
+          content =
+            '<h2>Bookmarks App</h2><p>A sleek bookmark manager built with modern web technologies. <a href="https://github.com/Christopher-Xavier/Bookmark-App-Final" target="_blank">View on GitHub</a></p>';
+        } else if (projectId === "project2") {
+          content =
+            '<h2>Quiz App</h2><p>An interactive quiz platform with engaging animations. <a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate" target="_blank">View on GitHub</a></p>';
+        } else if (projectId === "project3") {
+          content =
+            '<h2>Petful|Space Reputation</h2><p>A comprehensive app focused on pet care and space reputation management. <a href="https://github.com/Christopher-Xavier/Petful-Client" target="_blank">View on GitHub</a></p>';
+        } else if (projectId === "project4") {
+          content =
+            '<h2>Pizza Ordering Chatbot</h2><p>An innovative chatbot technology for seamless pizza ordering. <a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot" target="_blank">View on GitHub</a></p>';
+        }
+        modalContent.innerHTML = content;
+        document.getElementById("projectModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("projectModal").style.display = "none";
+      }
+
+      // Close modal if clicking outside of the modal-content
+      window.onclick = function (event) {
+        const modal = document.getElementById("projectModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
   </body>
 </html>
