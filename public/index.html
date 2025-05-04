@@ -1,71 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Christopher Bogan's dev portfolio showcasing skills in software development, web design, and successful projects.">
-    <title>Christopher | Dev Portfolio</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Christopher Bogan's Cool Dev Portfolio with dynamic animations and interactive design."
+    />
+    <title>Christopher | Cool Dev Portfolio</title>
+    <!-- CSS Frameworks and Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://www.w3schools.com/w3css/4/w3.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Animate.css for additional animations -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+
     <!-- LinkedIn Badge Script -->
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
     <style>
-      /* Global Styles */
-      body, h1, h2, h3, h4, h5, h6 {
-        font-family: 'Times New Roman', Times, serif, sans-serif;
+      /* Global Animated Gradient Background */
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+        background-size: 600% 600%;
+        animation: gradientAnimation 16s ease infinite;
       }
-      .w3-row-padding img {
-        margin-bottom: 12px;
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
-      /* Sidebar */
+
+      /* Sidebar and Navbar Styling */
       .w3-sidebar {
         inline-size: 120px;
-        background-color: #222;
+        background-color: rgba(0, 0, 0, 0.8);
       }
       #main {
         margin-inline-start: 120px;
+        animation: fadeIn 2s;
       }
-      @media only screen and (max-inline-size: 600px) {
-        #main {
-          margin-inline-start: 0;
-        }
+      .w3-bar-item {
+        transition: transform 0.3s, background-color 0.3s;
       }
-      /* Additional Custom Classes */
-      .avatar-img {
-        inline-size: 100%;
-        display: block;
+      .w3-bar-item:hover {
+        background-color: #444;
+        transform: scale(1.05);
       }
-      .hero-img {
-        max-width: 100%;
-        height: auto;
+
+      /* Header Section with Overlay & Animations */
+      header {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        color: #fff;
       }
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      header h1 {
+        font-size: 3.5em;
+        position: relative;
+        z-index: 1;
+        animation: slideInDown 1s ease-out;
+      }
+      header p {
+        font-size: 1.5em;
+        position: relative;
+        z-index: 1;
+        animation: slideInUp 1s ease-out;
+      }
+
+      /* Skill Bars */
       .skill-bar {
-        block-size: 28px;
+        height: 28px;
+        background-color: #333;
+        position: relative;
+        margin-bottom: 10px;
       }
-      .contact-info i {
-        margin-right: 8px;
+      .skill {
+        height: 100%;
+        background-color: #ff7e5f;
+      }
+
+      /* Project Cards with Hover Effects */
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s;
+      }
+      .project-card:hover {
+        transform: scale(1.03);
+      }
+      .project-card img {
+        width: 100%;
+        display: block;
+        border-radius: 8px;
+      }
+      .project-card figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .project-card:hover figcaption {
+        opacity: 1;
+      }
+
+      /* Footer Styling */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
       }
     </style>
   </head>
+
   <body class="w3-black">
-    <!-- Display Current Date -->
-    <p id="demo"></p>
+    <!-- Date Display -->
+    <p id="demo" class="w3-center w3-text-white"></p>
     <script>
       const d = new Date();
-      document.getElementById("demo").innerHTML = d;
+      document.getElementById("demo").innerHTML = d.toLocaleString();
     </script>
 
-    <!-- Logo or Branding -->
-    <div class="wrapper">
-      <svg>
-        <text x="50%" y="50%" dy=".35em" text-anchor="middle">CXPROTECH</text>
+    <!-- Logo / Branding Section -->
+    <div class="wrapper w3-center w3-padding-16">
+      <svg width="200" height="50">
+        <text
+          x="50%"
+          y="50%"
+          dy=".35em"
+          text-anchor="middle"
+          fill="#fff"
+          font-size="24"
+          font-family="Montserrat"
+        >
+          CXPROTECH
+        </text>
       </svg>
     </div>
 
     <!-- Sidebar Navigation for Larger Screens -->
     <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" aria-label="Sidebar Navigation">
-      <img src="./images/pro2.jpg" alt="Christopher's Avatar" class="avatar-img" loading="lazy">
+      <img src="./images/pro2.jpg" alt="Christopher's Avatar" style="width: 100%;" class="w3-circle" loading="lazy" />
       <a href="#home" class="w3-bar-item w3-button w3-padding-large w3-black">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
@@ -87,159 +200,174 @@
     <!-- Navbar for Small Screens -->
     <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
       <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-        <a href="#home" class="w3-bar-item w3-button" style="inline-size:25% !important">HOME</a>
-        <a href="#about" class="w3-bar-item w3-button" style="inline-size:25% !important">ABOUT</a>
-        <a href="#projects" class="w3-bar-item w3-button" style="inline-size:25% !important">PROJECTS</a>
-        <a href="#contact" class="w3-bar-item w3-button" style="inline-size:25% !important">CONTACT</a>
+        <a href="#home" class="w3-bar-item w3-button" style="width: 25% !important">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button" style="width: 25% !important">ABOUT</a>
+        <a href="#projects" class="w3-bar-item w3-button" style="width: 25% !important">PROJECTS</a>
+        <a href="#contact" class="w3-bar-item w3-button" style="width: 25% !important">CONTACT</a>
       </div>
     </div>
 
     <!-- Main Content -->
     <main id="main" class="w3-padding-large">
       <!-- Home Section -->
-      <header id="home" class="w3-container w3-padding-32 w3-center w3-black">
-        <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Christopher X.</h1>
-        <p>Software Developer | Web Designer.</p>
-        <img src="./images/pro2.jpg" alt="Christopher's Professional Image" class="w3-image hero-img" width="992" height="1108" loading="lazy">
+      <header
+        id="home"
+        class="w3-container w3-center"
+        style="padding: 100px 0; background: url('./images/bg-header.jpg') center/cover no-repeat;"
+      >
+        <h1 class="animate__animated animate__fadeInDown">I'm Christopher X.</h1>
+        <p class="animate__animated animate__fadeInUp">Software Developer | Web Designer</p>
+        <img
+          src="./images/pro2.jpg"
+          alt="Christopher's Professional Image"
+          class="w3-image w3-margin-top"
+          style="max-width: 350px; border-radius: 50%;"
+          loading="lazy"
+        />
       </header>
 
       <!-- About Section -->
-      <section id="about" class="w3-content w3-justify w3-text-grey w3-padding-64">
-        <h2 class="w3-text-light-grey">Christopher Bogan</h2>
-        <hr class="w3-opacity" style="inline-size:200px">
+      <section id="about" class="w3-content w3-justify w3-text-white w3-padding-64">
+        <h2 class="w3-text-white">About Me</h2>
+        <hr class="w3-opacity" style="width: 200px; margin: auto;" />
         <p>
-          Hello! I am Christopher Bogan, a graduate holding a Bachelor’s degree in Information Technology. My passion lies in leveraging technology to tackle complex challenges. I’ve built a strong theoretical and practical foundation in IT systems and digital trends, and I’m eager to contribute innovative solutions in the tech industry.
+          I'm Christopher Bogan, a passionate IT graduate focused on merging innovative technology with creative design. I thrive on solving problems and transforming ideas into dynamic solutions. Welcome to my digital playground where code meets artistry!
         </p>
-        <img src="./images/wp1536539-hi-tech-wallpaper.jpg" alt="High-tech programming background" style="display: inline-flex;" loading="lazy">
-        
-        <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
-        <p class="w3-wide">Problem-Solving</p>
-        <div class="w3-white">
-          <div class="w3-dark-grey skill-bar" style="inline-size:95%"></div>
+        <img
+          src="./images/wp1536539-hi-tech-wallpaper.jpg"
+          alt="Dynamic tech background"
+          style="display: block; margin: 20px auto; max-width: 90%;"
+          loading="lazy"
+        />
+
+        <h3 class="w3-padding-16">My Skills</h3>
+        <p>Problem-Solving</p>
+        <div class="skill-bar">
+          <div class="skill" style="width: 95%;"></div>
         </div>
-        <p class="w3-wide">Web Design</p>
-        <div class="w3-white">
-          <div class="w3-dark-grey skill-bar" style="inline-size:85%"></div>
+        <p>Web Design</p>
+        <div class="skill-bar">
+          <div class="skill" style="width: 85%; background-color: #86a8e7;"></div>
         </div>
-        <p class="w3-wide">Full Stack Development</p>
-        <div class="w3-white">
-          <div class="w3-dark-grey skill-bar" style="inline-size:80%"></div>
+        <p>Full Stack Development</p>
+        <div class="skill-bar">
+          <div class="skill" style="width: 80%; background-color: #91eae4;"></div>
         </div>
-        
-        <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">11+</span><br>
+
+        <div class="w3-row w3-center w3-padding-16 w3-section">
+          <div class="w3-quarter">
+            <span class="w3-xlarge">11+</span><br />
             Partners
           </div>
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">55+</span><br>
-            Projects Done
+          <div class="w3-quarter">
+            <span class="w3-xlarge">55+</span><br />
+            Projects
           </div>
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">89+</span><br>
-            Happy Clients
+          <div class="w3-quarter">
+            <span class="w3-xlarge">89+</span><br />
+            Clients
           </div>
-          <div class="w3-quarter w3-section">
-            <span class="w3-xlarge">150+</span><br>
+          <div class="w3-quarter">
+            <span class="w3-xlarge">150+</span><br />
             Meetings
           </div>
         </div>
         <p>
           <a href="https://profile.indeed.com/p/christopherb-4q714qt" target="_blank">
-            <button class="w3-button w3-light-grey w3-padding-large w3-section" title="Download Resume" lang="en">Download Resume</button>
+            <button class="w3-button w3-light-grey w3-padding-large">
+              Download Resume <i class="fa fa-download"></i>
+            </button>
           </a>
-          <i class="fa fa-download"></i> Download Resume
         </p>
       </section>
 
-      <!-- Pricing Section -->
-      <section id="pricing" class="w3-padding-64 w3-content">
-        <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
-        <div class="w3-row-padding" style="margin:0 -16px">
-          <div class="w3-half w3-margin-bottom">
-            <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-              <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-              <li class="w3-padding-16">Web Design</li>
-              <li class="w3-padding-16">Problem-Solving</li>
-              <li class="w3-padding-16">5GB Storage</li>
-              <li class="w3-padding-16">Mail Support</li>
-              <li class="w3-padding-16">
-                <h2>$22</h2>
-                <span class="w3-opacity">per hour</span>
-              </li>
-              <li class="w3-light-grey w3-padding-24">
-                <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-              </li>
-            </ul>
-          </div>
-          <div class="w3-half">
-            <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-              <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
-              <li class="w3-padding-16">Web Design</li>
-              <li class="w3-padding-16">Software Troubleshooting</li>
-              <li class="w3-padding-16">50GB Storage</li>
-              <li class="w3-padding-16">Endless Support</li>
-              <li class="w3-padding-16">
-                <h2>$25</h2>
-                <span class="w3-opacity">per Issue/Hour</span>
-              </li>
-              <li class="w3-button w3-padding-24 w3-hover-black">
-                <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Portfolio Section -->
+      <!-- Projects Section -->
       <section id="projects" class="w3-padding-64 w3-content">
-        <h2 class="w3-text-light-grey">My Projects</h2>
-        <hr class="w3-opacity" style="inline-size:200px">
-        <div class="w3-row-padding" style="margin:0 -16px">
+        <h2 class="w3-text-white">My Projects</h2>
+        <hr class="w3-opacity" style="width: 200px; margin: auto;" />
+        <div class="w3-row-padding" style="margin: 0 -16px;">
           <div class="w3-half">
-            <figure>
-              <img src="./images/work-1.jpg" style="inline-size:100%" alt="Bookmarks App screenshot" loading="lazy">
+            <figure class="project-card">
+              <img
+                src="./images/work-1.jpg"
+                alt="Bookmarks App screenshot"
+                loading="lazy"
+              />
               <figcaption>
-                Bookmarks App 
-                <button><a href="https://github.com/Christopher-Xavier/Bookmark-App-Final">Github Repository</a></button>
+                Bookmarks App<br />
+                <button class="w3-button w3-white">
+                  <a href="https://github.com/Christopher-Xavier/Bookmark-App-Final">Github</a>
+                </button>
               </figcaption>
             </figure>
-            <figure>
-              <img src="./images/work-2.jpg" style="inline-size:100%" alt="Quiz App screenshot" width="430" height="721" loading="lazy">
+            <figure class="project-card" style="margin-top: 16px;">
+              <img
+                src="./images/work-2.jpg"
+                alt="Quiz App screenshot"
+                loading="lazy"
+              />
               <figcaption>
-                Quiz App 
-                <button><a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate">Github Repository</a></button>
-              </figcaption>
-            </figure>
-            <figure>
-              <img src="./images/work-3.jpg" style="inline-size:100%" alt="Petful|Space Reputation screenshot" loading="lazy">
-              <figcaption>
-                Petful|Space Reputation
-                <button><a href="https://github.com/Christopher-Xavier/Petful-Client">Github Repository</a></button>
+                Quiz App<br />
+                <button class="w3-button w3-white">
+                  <a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate">Github</a>
+                </button>
               </figcaption>
             </figure>
           </div>
           <div class="w3-half">
-            <figure>
-              <img src="./images/work-5.jpg" style="inline-size:100%" alt="Spanish Tutor screenshot" loading="lazy">
+            <figure class="project-card">
+              <img
+                src="./images/work-3.jpg"
+                alt="Petful|Space Reputation"
+                loading="lazy"
+              />
+              <figcaption>
+                Petful|Space Reputation<br />
+                <button class="w3-button w3-white">
+                  <a href="https://github.com/Christopher-Xavier/Petful-Client">Github</a>
+                </button>
+              </figcaption>
+            </figure>
+            <figure class="project-card" style="margin-top: 16px;">
+              <img
+                src="./images/work-5.jpg"
+                alt="Spanish Tutor"
+                loading="lazy"
+              />
               <figcaption>Spanish Tutor</figcaption>
             </figure>
-            <figure>
-              <img src="./images/work-4.jpg" style="inline-size:100%" alt="Buddy App screenshot" loading="lazy">
+            <figure class="project-card" style="margin-top: 16px;">
+              <img
+                src="./images/work-4.jpg"
+                alt="Buddy App"
+                loading="lazy"
+              />
               <figcaption>Buddy App</figcaption>
             </figure>
-            <figure>
-              <img src="./images/work-6.jpg" style="inline-size:100%" alt="Pizza Ordering Chatbot screenshot" loading="lazy">
+            <figure class="project-card" style="margin-top: 16px;">
+              <img
+                src="./images/work-6.jpg"
+                alt="Pizza Ordering Chatbot"
+                loading="lazy"
+              />
               <figcaption>
-                Pizza Ordering Chatbot 
-                <button><a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot">Github Repo</a></button>
+                Pizza Ordering Chatbot<br />
+                <button class="w3-button w3-white">
+                  <a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot">Github</a>
+                </button>
               </figcaption>
             </figure>
-            <figure>
-              <img src="./images/Cabinet-view.png" style="inline-size:100%" alt="Linus Bar Client screenshot" loading="lazy">
+            <figure class="project-card" style="margin-top: 16px;">
+              <img
+                src="./images/Cabinet-view.png"
+                alt="Linus Bar Client"
+                loading="lazy"
+              />
               <figcaption>
-                Linus Bar Client 
-                <button><a href="https://github.com/Christopher-Xavier/Bar-client">Github Repo</a></button>
+                Linus Bar Client<br />
+                <button class="w3-button w3-white">
+                  <a href="https://github.com/Christopher-Xavier/Bar-client">Github</a>
+                </button>
               </figcaption>
             </figure>
           </div>
@@ -247,57 +375,63 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="w3-padding-64 w3-content w3-text-grey">
-        <h2 class="w3-text-light-grey">Contact Me</h2>
-        <hr class="w3-opacity" style="inline-size:200px">
-        <div class="w3-section contact-info">
-          <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge"></i> Tupelo, MS</p>
-          <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge"></i> Phone: 662-871-2486</p>
-          <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge"></i> Email: mail@mail.com</p>
+      <section id="contact" class="w3-padding-64 w3-content w3-text-white">
+        <h2>Contact Me</h2>
+        <hr class="w3-opacity" style="width: 200px; margin: auto;" />
+        <div class="w3-section">
+          <p><i class="fa fa-map-marker fa-fw"></i> Tupelo, MS</p>
+          <p><i class="fa fa-phone fa-fw"></i> 662-871-2486</p>
+          <p><i class="fa fa-envelope fa-fw"></i> mail@mail.com</p>
         </div>
         <!-- Map Embed -->
-        <iframe id="inlineFrameExample" title="Map of Tupelo, MS" width="300" height="200" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik" style="border: 1px solid #aaa"></iframe>
+        <iframe
+          title="Map of Tupelo, MS"
+          width="300"
+          height="200"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik"
+          style="border: 1px solid #aaa"
+        ></iframe>
         <!-- Contact Form -->
-        <h3>Send me a message:</h3>
-        <form action="/action_page.php" method="post" target="_blank">
-          <p>
-            <input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name">
-          </p>
-          <p>
-            <input class="w3-input w3-padding-16" type="email" placeholder="Email" required name="Email">
-          </p>
-          <p>
-            <input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject">
-          </p>
-          <p>
-            <textarea class="w3-input w3-padding-16" placeholder="Message" required name="Message"></textarea>
-          </p>
-          <p>
-            <button class="w3-button w3-light-grey w3-padding-large" type="submit">
-              <i class="fa fa-paper-plane"></i> SEND MESSAGE
-            </button>
-          </p>
+        <h3 class="w3-margin-top">Send Me a Message</h3>
+        <form action="/action_page.php" method="post" target="_blank" class="w3-margin-top">
+          <input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name" />
+          <input class="w3-input w3-padding-16 w3-margin-top" type="email" placeholder="Email" required name="Email" />
+          <input class="w3-input w3-padding-16 w3-margin-top" type="text" placeholder="Subject" required name="Subject" />
+          <textarea class="w3-input w3-padding-16 w3-margin-top" placeholder="Message" required name="Message"></textarea>
+          <button class="w3-button w3-light-grey w3-padding-large w3-margin-top" type="submit">
+            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          </button>
         </form>
       </section>
 
-      <!-- LinkedIn Profile Badge -->
-      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="christopher-bogan" data-version="v1">
-        <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/christopher-bogan?trk=profile-badge">Christopher Bogan</a>
+      <!-- LinkedIn Badge -->
+      <div
+        class="badge-base LI-profile-badge w3-center"
+        data-locale="en_US"
+        data-size="large"
+        data-theme="light"
+        data-type="VERTICAL"
+        data-vanity="christopher-bogan"
+        data-version="v1"
+      >
+        <a
+          class="badge-base__link LI-simple-link"
+          href="https://www.linkedin.com/in/christopher-bogan?trk=profile-badge"
+          >Christopher Bogan</a
+        >
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-      <div class="social-icons">
+    <footer>
+      <div class="w3-center">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
         <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
         <i class="fa fa-twitter w3-hover-opacity"></i>
         <i class="fa fa-linkedin w3-hover-opacity"></i>
       </div>
-      <p class="w3-small">This website was created by Christopher X. Call today to get yours!</p>
-      <a class="w3-button w3-round-xxlarge w3-small w3-black" href="https://www.w3schools.com/spaces" target="_blank">Start now</a>
+      <p>&copy; 2025 Christopher X. All rights reserved.</p>
+      <a class="w3-button w3-round-xxlarge w3-black" href="https://www.w3schools.com/spaces" target="_blank">Start Now</a>
     </footer>
 
     <!-- External Scripts -->
