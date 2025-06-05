@@ -1,527 +1,702 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Christopher Bogan's interactive dev portfolio with dynamic animations and engaging features."
-    />
-    <title>Christopher | Dev Portfolio</title>
-    <!-- CSS Frameworks and Fonts -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <!-- AOS Library for Scroll Animations -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-    />
-    <style>
-      /* Global & Mode Dependent Styles */
-      body {
-        margin: 0;
-        font-family: 'Montserrat', sans-serif;
-        transition: background 0.3s, color 0.3s;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savior Mobile Tech Solutions</title>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400i,700">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-1q8d3e5" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/lib.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/lib.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-ui/4.12.4/es/FormGroup/index.min.js">
+ <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #F4F4F4;
+      color: #323232;
+      line-height: 1.6;
+    }
+    
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(135deg, #0A2342, #0E4D64);
+      color: #fff;
+      padding: 20px 0;
+    }
+    
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+    
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .menu {
+      display: flex;
+      align-items: center;
+    }
+    
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    
+    .menu a:hover {
+      color: #39FF14;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px;
+      background: url('images/Copilot_20250529_044544.png') no-repeat center center;
+      background-size: contain;
+      color: #fff;
+      overflow: hidden;
+    }
+    
+    /* The canvas covering the hero area for the advanced digital art */
+    .hero canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    
+    /* Hero overlay for darkening effect */
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 35, 66, 0.7);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 24px;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    }
+    
+    .hero button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      background-color: #39FF14; /* Neon Green */
+      color: #000;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .hero button:hover {
+      background-color: #32e50c;
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .services h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #0E4D64;
+    }
+    
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    
+    .service-card {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      flex: 1 1 250px;
+      max-width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: #1c82a7;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+    
+    .service-card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    /* About & Contact Sections */
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .section.about {
+      background-color: #f9f9f9;
+    }
+    
+    /* Improved Footer */
+    footer {
+      background-color: #323232;
+      color: #fff;
+      padding: 40px 20px;
+      font-size: 14px;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #444;
+    }
+    
+    .footer-col {
+      flex: 1 1 250px;
+      margin: 10px 20px;
+    }
+    
+    .footer-col h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .footer-col p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin: 8px 0;
+    }
+    
+    .footer-links a {
+      color: #00E5FF;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: #00CFFF;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: #444;
+      transition: background 0.3s ease;
+    }
+    
+    .social-links a img {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .social-links a:hover {
+      background-color: #00E5FF;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      padding-top: 20px;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
       }
-      body.dark-mode {
-        background-color: #121212;
-        color: #e0e0e0;
+      .hero p {
+        font-size: 18px;
       }
-      body.light-mode {
-        background-color: #ffffff;
-        color: #333;
-        /* Animated gradient background for light mode */
-        background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
-        background-size: 600% 600%;
-        animation: gradientAnimation 16s ease infinite;
+      nav {
+        flex-direction: column;
       }
-      @keyframes gradientAnimation {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+      .service-cards {
+        flex-direction: column;
+        align-items: center;
       }
-      /* Sidebar */
-      .w3-sidebar {
-        inline-size: 120px;
-        background-color: rgba(0, 0, 0, 0.8);
+      .service-card {
+        max-width: 100%;
       }
-      #main {
-        margin-inline-start: 120px;
-        padding: 20px;
+      .hero {
+        background-size: contain;
       }
-      /* Dark/Light Toggle Button */
-      .toggle-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #fff;
-        border: none;
-        padding: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 1000;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      }
-      .toggle-btn.dark {
-        background: #333;
-        color: #fff;
-      }
-      /* Header Styles & Overlay */
-      header {
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        padding: 100px 20px;
-      }
-      header::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1;
-      }
-      header h1,
-      header p {
-        position: relative;
-        z-index: 2;
-      }
-      /* Project Card Styling with Hover Effects */
-      .project-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-        transition: transform 0.3s;
-      }
-      .project-card:hover {
-        transform: scale(1.03);
-      }
-      .project-card img {
-        width: 100%;
-        display: block;
-      }
-      .project-card figcaption {
-        padding: 10px;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.6);
-        color: #fff;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .project-card:hover figcaption {
-        opacity: 1;
-      }
-      /* Modal Styles */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 2000;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.8);
-      }
-      .modal-content {
-        margin: auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 4px;
-        width: 80%;
-        max-width: 600px;
-        color: #333;
-      }
-      .close-modal {
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body class="light-mode">
-    <!-- Dark/Light Mode Toggle Button -->
-    <button class="toggle-btn" id="toggleModeBtn" onclick="toggleMode()">&#9790;</button>
+    }
+  </style>
+</head>
+<script>
+  document.addEventListener("mousemove", function(event) {
+    const glow = document.createElement("div");
+    glow.classList.add("mouse-glow");
+    document.body.appendChild(glow);
 
-    <!-- Sidebar Navigation for Larger Screens -->
-    <nav
-      class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center"
-      aria-label="Sidebar Navigation"
-    >
-      <img
-        src="./images/pro2.jpg"
-        alt="Christopher's Avatar"
-        style="width: 100%;"
-        class="w3-circle"
-        loading="lazy"
-      />
-      <a href="#home" class="w3-bar-item w3-button w3-padding-large w3-black">
-        <i class="fa fa-home w3-xxlarge"></i>
-        <p>HOME</p>
-      </a>
-      <a
-        href="#about"
-        class="w3-bar-item w3-button w3-padding-large w3-hover-black"
-      >
-        <i class="fa fa-user w3-xxlarge"></i>
-        <p>ABOUT</p>
-      </a>
-      <a
-        href="#projects"
-        class="w3-bar-item w3-button w3-padding-large w3-hover-black"
-      >
-        <i class="fa fa-eye w3-xxlarge"></i>
-        <p>PROJECTS</p>
-      </a>
-      <a
-        href="#contact"
-        class="w3-bar-item w3-button w3-padding-large w3-hover-black"
-      >
-        <i class="fa fa-envelope w3-xxlarge"></i>
-        <p>CONTACT</p>
-      </a>
+    glow.style.left = `${event.pageX}px`;
+    glow.style.top = `${event.pageY}px`;
+
+    setTimeout(() => {
+      glow.remove();
+    }, 500);
+  });
+</script>
+
+<style>
+.mouse-glow {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  opacity: 0.6;
+  box-shadow: 0px 0px 8px var(--accent-color);
+  pointer-events: none;
+  animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(2); }
+}
+</style>
+
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <div class="logo">Savior Mobile Tech Solutions</div>
+      <div class="menu">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
+  </header>
 
-    <!-- Navbar for Small Screens -->
-    <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-      <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-        <a
-          href="#home"
-          class="w3-bar-item w3-button"
-          style="width: 25% !important;"
-          >HOME</a
-        >
-        <a
-          href="#about"
-          class="w3-bar-item w3-button"
-          style="width: 25% !important;"
-          >ABOUT</a
-        >
-        <a
-          href="#projects"
-          class="w3-bar-item w3-button"
-          style="width: 25% !important;"
-          >PROJECTS</a
-        >
-        <a
-          href="#contact"
-          class="w3-bar-item w3-button"
-          style="width: 25% !important;"
-          >CONTACT</a
-        >
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Optional: Advanced canvas animation; if not used, you can remove the canvas element -->
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <h1>Rescuing Your Tech, Wherever You Are</h1>
+      <p>Your on-the-go tech savior, ready to fix your devices and unlock digital possibilities.</p>
+      <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
+        Get Help Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>Mobile Device Repair</h3>
+        <p>Expert repairs for smartphones, tablets, and laptops with fast on-site service.</p>
+      </div>
+      <div class="service-card">
+        <h3>Tech Support</h3>
+        <p>Comprehensive solutions from troubleshooting to security enhancements for your digital devices.</p>
+      </div>
+      <div class="service-card">
+        <h3>Web Development</h3>
+        <p>Custom web designs and development services to elevate your online presence.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Main Content -->
-    <div id="main">
-      <!-- Home Section with Scroll Animation -->
-      <header id="home" data-aos="fade-up">
-        <h1>I'm Christopher X.</h1>
-        <p>Software Developer | Web Designer</p>
-        <img
-          src="./images/pro2.jpg"
-          alt="Christopher's Professional Image"
-          style="max-width: 350px; border-radius: 50%;"
-          loading="lazy"
-        />
-      </header>
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <h2>About Us</h2>
+    <p>
+      Savior Mobile Tech Solutions is dedicated to providing on-the-go emergency tech repair and digital innovation. Whether it’s hardware, software, or web solutions, our mission is to rescue your tech troubles and keep you connected in today’s digital world.
+      Savior Mobile Tech Solutions: Keeping You Connected, No Matter What At Savior Mobile Tech Solutions, we specialize in fast, reliable mobile tech repair and digital innovation, ensuring your devices stay functional when you need them most. Whether it’s a sudden hardware failure, software glitch, or a seamless web experience, we restore, enhance, and safeguard your technology—keeping you connected and in control, anytime, anywhere.
+    </p>
+  </section>
 
-      <!-- About Section -->
-      <section id="about" data-aos="fade-right" class="w3-padding-64">
-        <h2>About Me</h2>
-        <hr style="width: 200px; margin: auto;" />
-        <p>
-          I'm Christopher Bogan, a passionate IT professional blending
-          innovative technology with creative design. I love solving challenges
-          and transforming ideas into dynamic, interactive solutions.
-        </p>
-        <img
-          src="./images/wp1536539-hi-tech-wallpaper.jpg"
-          alt="Tech background"
-          style="display: block; margin: 20px auto; max-width: 90%;"
-          loading="lazy"
-        />
-        <h3>My Skills</h3>
-        <p>Problem-Solving</p>
-        <div class="w3-light-grey" style="margin-bottom: 10px;">
-          <div class="w3-container w3-orange" style="width:95%">
-            95%
-          </div>
-        </div>
-        <p>Web Design</p>
-        <div class="w3-light-grey" style="margin-bottom: 10px;">
-          <div
-            class="w3-container"
-            style="width:85%; background-color: #86a8e7;"
-          >
-            85%
-          </div>
-        </div>
-        <p>Full Stack Development</p>
-        <div class="w3-light-grey" style="margin-bottom: 10px;">
-          <div
-            class="w3-container"
-            style="width:80%; background-color: #91eae4;"
-          >
-            80%
-          </div>
-        </div>
-        <div class="w3-row w3-center w3-padding-16">
-          <div class="w3-quarter">
-            <span class="w3-xlarge">11+</span><br />Partners
-          </div>
-          <div class="w3-quarter">
-            <span class="w3-xlarge">55+</span><br />Projects
-          </div>
-          <div class="w3-quarter">
-            <span class="w3-xlarge">89+</span><br />Clients
-          </div>
-          <div class="w3-quarter">
-            <span class="w3-xlarge">150+</span><br />Meetings
-          </div>
-        </div>
-        <p>
-          <a
-            href="https://profile.indeed.com/p/christopherb-4q714qt"
-            target="_blank"
-            ><button class="w3-button w3-light-grey w3-padding-large">
-              Download Resume <i class="fa fa-download"></i>
-            </button></a
-          >
-        </p>
-      </section>
+  
+<section id="guarantee">
+    <h2>Our Guarantee</h2>
+    <p>At <strong>Savior Mobile Tech Solutions</strong>, we stand by the quality, speed, and reliability of our services. We guarantee:</p>
+    <ul>
+        <li><strong>Expert Repairs</strong> – Every repair is performed with precision and care to restore your device’s functionality.</li>
+        <li><strong>Satisfaction Assurance</strong> – If you're not completely satisfied, we’ll make it right.</li>
+        <li><strong>Speed & Convenience</strong> – On-the-go service means minimal downtime so you stay connected.</li>
+        <li><strong>Secure & Trustworthy</strong> – Your tech is in safe hands. We prioritize data security and device integrity.</li>
+    </ul>
+</section>
 
-      <!-- Projects Section with Scroll Animation -->
-      <section id="projects" data-aos="fade-left" class="w3-padding-64">
-        <h2>My Projects</h2>
-        <hr style="width: 200px; margin: auto;" />
-        <div
-          class="w3-row-padding"
-          style="margin: 0 -16px;"
-        >
-          <div class="w3-half">
-            <figure class="project-card" onclick="openModal('project1')">
-              <img
-                src="./images/work-1.jpg"
-                alt="Bookmarks App"
-                loading="lazy"
-              />
-              <figcaption>Bookmarks App</figcaption>
-            </figure>
-            <figure class="project-card" onclick="openModal('project2')">
-              <img
-                src="./images/work-2.jpg"
-                alt="Quiz App"
-                loading="lazy"
-              />
-              <figcaption>Quiz App</figcaption>
-            </figure>
-          </div>
-          <div class="w3-half">
-            <figure class="project-card" onclick="openModal('project3')">
-              <img
-                src="./images/work-3.jpg"
-                alt="Petful|Space Reputation"
-                loading="lazy"
-              />
-              <figcaption>Petful|Space Reputation</figcaption>
-            </figure>
-            <figure class="project-card" onclick="openModal('project4')">
-              <img
-                src="./images/work-6.jpg"
-                alt="Pizza Ordering Chatbot"
-                loading="lazy"
-              />
-              <figcaption>Pizza Ordering Chatbot</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
+  <!-- Contact Section -->
+<section id="contact" class="section">
+  <h2>Contact Us</h2>
+  <p>
+    Call us at <strong>(662) 213-0531</strong> or email <strong>support@saviormobiletech.com</strong>,
+    or fill out the form below. We’re available 24/7 for any tech emergencies.
+  </p>
+  <fieldset>
+    <legend>Contact Form</legend>
+    <p>We would love to hear from you! Please fill out the form below and we will get back to you as soon as possible.</p>
+  <form id="contactForm" method="post" action="#">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  </fieldset>
+</section>
 
-      <!-- Modal (Interactive Project Details) -->
-      <div id="projectModal" class="modal">
-        <div class="modal-content">
-          <span class="close-modal" onclick="closeModal()">&times;</span>
-          <div id="modalContent">
-            <!-- Project detail content is injected dynamically -->
-          </div>
-        </div>
+  <!-- Improved Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Savior Mobile Tech Solutions</h3>
+        <p>Your trusted tech savior for on-the-go emergency repairs and digital innovation.</p>
       </div>
-
-      <!-- Contact Section with Scroll Animation -->
-      <section id="contact" data-aos="fade-up" class="w3-padding-64">
-        <h2>Contact Me</h2>
-        <hr style="width: 200px; margin: auto;" />
-        <div class="w3-section">
-          <p><i class="fa fa-map-marker fa-fw"></i> Tupelo, MS</p>
-          <p><i class="fa fa-phone fa-fw"></i> 662-871-2486</p>
-          <p><i class="fa fa-envelope fa-fw"></i> mail@mail.com</p>
-        </div>
-        <iframe
-          title="Map of Tupelo, MS"
-          width="300"
-          height="200"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004&layer=mapnik"
-          style="border: 1px solid #aaa"
-        ></iframe>
-        <h3 class="w3-margin-top">Send Me a Message</h3>
-        <form
-          action="/action_page.php"
-          method="post"
-          target="_blank"
-          class="w3-margin-top"
-        >
-          <input
-            class="w3-input w3-padding-16"
-            type="text"
-            placeholder="Name"
-            required
-            name="Name"
-          />
-          <input
-            class="w3-input w3-padding-16 w3-margin-top"
-            type="email"
-            placeholder="Email"
-            required
-            name="Email"
-          />
-          <input
-            class="w3-input w3-padding-16 w3-margin-top"
-            type="text"
-            placeholder="Subject"
-            required
-            name="Subject"
-          />
-          <textarea
-            class="w3-input w3-padding-16 w3-margin-top"
-            placeholder="Message"
-            required
-            name="Message"
-          ></textarea>
-          <button
-            class="w3-button w3-light-grey w3-padding-large w3-margin-top"
-            type="submit"
-          >
-            <i class="fa fa-paper-plane"></i> SEND MESSAGE
-          </button>
-        </form>
-      </section>
-
-      <!-- LinkedIn Badge -->
-      <div class="w3-center w3-padding-64">
-        <div
-          class="badge-base LI-profile-badge"
-          data-locale="en_US"
-          data-size="large"
-          data-theme="light"
-          data-type="VERTICAL"
-          data-vanity="christopher-bogan"
-          data-version="v1"
-        >
-          <a
-            class="badge-base__link LI-simple-link"
-            href="https://www.linkedin.com/in/christopher-bogan?trk=profile-badge"
-            >Christopher Bogan</a
-          >
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <!-- Replace these image paths with your actual social icon files -->
+          <a href="#" aria-label="Facebook">
+            <img src="images/facebook.svg" alt="Facebook">
+          </a>
+          <a href="#" aria-label="Twitter">
+            <img src="images/twitter.svg" alt="Twitter">
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <img src="images/linkedin.svg" alt="LinkedIn">
+          </a>
         </div>
       </div>
     </div>
+    <div class="footer-bottom">
+      &copy; 2025 Savior Mobile Tech Solutions. All rights reserved.
+    </div>
+  </footer>
+<div id="chatbot-icon" onclick="toggleChat()">
+    💬 TechBot
+</div>
+<div id="chat-window" class="hidden">
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Ask me about tech issues...">
+    <button onclick="sendMessage()">Send</button>
+</div>
 
-    <!-- Footer -->
-    <footer class="w3-center w3-padding-64">
-      <div>
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-      </div>
-      <p>&copy; 2025 Christopher X. All rights reserved.</p>
-      <a
-        class="w3-button w3-round-xxlarge w3-black"
-        href="https://www.w3schools.com/spaces"
-        target="_blank"
-        >Start Now</a
-      >
-    </footer>
-
-    <!-- External Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      // Initialize AOS
-      AOS.init();
-
-      // Dark/Light Mode Toggle Functionality
-      function toggleMode() {
-        const body = document.body;
-        const toggleBtn = document.getElementById("toggleModeBtn");
-        if (body.classList.contains("light-mode")) {
-          body.classList.remove("light-mode");
-          body.classList.add("dark-mode");
-          toggleBtn.innerHTML = "&#9788;"; // sun icon for dark mode
-          toggleBtn.classList.add("dark");
-        } else {
-          body.classList.remove("dark-mode");
-          body.classList.add("light-mode");
-          toggleBtn.innerHTML = "&#9790;"; // moon icon for light mode
-          toggleBtn.classList.remove("dark");
+  <!-- Optional: Advanced Canvas Animation Script -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      // Resize canvas to fill the hero section
+      function resizeHeroCanvas() {
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
+      }
+      window.addEventListener('resize', resizeHeroCanvas);
+      resizeHeroCanvas();
+      
+      // Draw a radial gradient background
+      function drawBackground() {
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        const maxRadius = Math.max(canvas.width, canvas.height) / 1.2;
+        const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxRadius);
+        gradient.addColorStop(0, 'rgba(10,35,66,0.7)');
+        gradient.addColorStop(0.5, 'rgba(14,77,100,0.7)');
+        gradient.addColorStop(1, 'rgba(81,45,109,0.7)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      
+      // Particle system for digital pulses
+      const particles = [];
+      const particleCount = 100;
+      
+      function initParticles() {
+        particles.length = 0;
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            alpha: Math.random()
+          });
         }
       }
-
-      // Modal functions for project details
-      function openModal(projectId) {
-        const modalContent = document.getElementById("modalContent");
-        let content = "";
-        if (projectId === "project1") {
-          content =
-            '<h2>Bookmarks App</h2><p>A sleek bookmark manager built with modern web technologies. <a href="https://github.com/Christopher-Xavier/Bookmark-App-Final" target="_blank">View on GitHub</a></p>';
-        } else if (projectId === "project2") {
-          content =
-            '<h2>Quiz App</h2><p>An interactive quiz platform with engaging animations. <a href="https://github.com/Christopher-Xavier/ei-quiz-app-boilerplate" target="_blank">View on GitHub</a></p>';
-        } else if (projectId === "project3") {
-          content =
-            '<h2>Petful|Space Reputation</h2><p>A comprehensive app focused on pet care and space reputation management. <a href="https://github.com/Christopher-Xavier/Petful-Client" target="_blank">View on GitHub</a></p>';
-        } else if (projectId === "project4") {
-          content =
-            '<h2>Pizza Ordering Chatbot</h2><p>An innovative chatbot technology for seamless pizza ordering. <a href="https://github.com/Christopher-Xavier/Cis110PizzaOrderingChatbot" target="_blank">View on GitHub</a></p>';
-        }
-        modalContent.innerHTML = content;
-        document.getElementById("projectModal").style.display = "block";
+      initParticles();
+      
+      function updateParticles() {
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.alpha += 0.005;
+          if (p.alpha > 1) p.alpha = 0;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.y > canvas.height) p.y = 0;
+          if (p.y < 0) p.y = canvas.height;
+        });
       }
-
-      function closeModal() {
-        document.getElementById("projectModal").style.display = "none";
+      
+      function drawParticles() {
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(57,255,20,' + p.alpha + ')';
+          ctx.fill();
+        });
       }
+      
+      // Draw central emblem: a rotating shield with smartphone outline
+      let emblemRotation = 0;
+      function drawEmblem() {
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const shieldSize = Math.min(canvas.width, canvas.height) * 0.15;
+        
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(emblemRotation);
+        
+        // Draw Shield Shape
+        ctx.beginPath();
+        ctx.moveTo(0, -shieldSize);
+        ctx.lineTo(shieldSize * 0.8, -shieldSize * 0.3);
+        ctx.lineTo(shieldSize * 0.5, shieldSize);
+        ctx.lineTo(-shieldSize * 0.5, shieldSize);
+        ctx.lineTo(-shieldSize * 0.8, -shieldSize * 0.3);
+        ctx.closePath();
+        const shieldGradient = ctx.createLinearGradient(0, -shieldSize, 0, shieldSize);
+        shieldGradient.addColorStop(0, '#B0B0B0');
+        shieldGradient.addColorStop(1, '#323232');
+        ctx.fillStyle = shieldGradient;
+        ctx.fill();
+        ctx.strokeStyle = '#39FF14';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Draw Smartphone Outline
+        const phoneWidth = shieldSize * 0.5;
+        const phoneHeight = shieldSize * 0.8;
+        ctx.beginPath();
+        ctx.rect(-phoneWidth/2, -phoneHeight/2, phoneWidth, phoneHeight);
+        ctx.stroke();
+        // Draw dividing line
+        ctx.beginPath();
+        ctx.moveTo(-phoneWidth/2, -phoneHeight/4);
+        ctx.lineTo(phoneWidth/2, -phoneHeight/4);
+        ctx.stroke();
+        ctx.restore();
+        
+        emblemRotation += 0.005;
+      }
+      
+      function animateCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBackground();
+        updateParticles();
+        drawParticles();
+        drawEmblem();
+        requestAnimationFrame(animateCanvas);
+      }
+      
+      animateCanvas();
+    })();
+  </script>
+  <canvas id="particleCanvas"></canvas>
+<script>
+  const canvas = document.getElementById("particleCanvas");
+  const ctx = canvas.getContext("2d");
 
-      // Close modal if clicking outside of the modal-content
-      window.onclick = function (event) {
-        const modal = document.getElementById("projectModal");
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    </script>
-  </body>
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  const particles = [];
+  for (let i = 0; i < 40; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 3 + 1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      alpha: Math.random(),
+    });
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha += 0.01;
+      if (p.alpha > 1) p.alpha = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 173, 181, ${p.alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+</script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Thank you for contacting us! We will get back to you soon.');
+      this.reset();
+    });
+  </script>
+  <section class="fade-in">
+  <h2>Why Choose Us?</h2>
+  <p>Your reliable, on-the-go tech savior.</p>
+</section>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add("loaded");
+  });
+</script>
+  <style>
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .loaded .fade-in {
+      opacity: 1;
+    }
+  </style>
+  <script>
+  document.addEventListener("mousemove", function(event) {
+    const glow = document.createElement("div");
+    glow.classList.add("mouse-glow");
+    document.body.appendChild(glow);
+
+    glow.style.left = `${event.pageX}px`;
+    glow.style.top = `${event.pageY}px`;
+
+    setTimeout(() => {
+      glow.remove();
+    }, 500);
+  });
+</script>
+  <style>
+    .mouse-glow {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #0b0ff7; /* Neon Green */
+      border-radius: 50%;
+      opacity: 0.6;
+      box-shadow: 0px 0px 8px #39FF14;
+      pointer-events: none;
+      animation: fadeOut 0.5s ease-out;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(2); }
+    }
+  </style>"
+</body>
 </html>
